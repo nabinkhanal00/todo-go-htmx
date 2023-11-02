@@ -1,0 +1,22 @@
+{
+	"name": "todo-go-htmx-postgres",
+  	"version": "1.0.0",
+  	"description": "",
+  	"main": "index.js",
+  	"type":"module",
+  	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"dev": "vite build --watch"
+	},
+	"keywords": [],
+  	"author": "",
+  	"license": "ISC",
+  	"devDependencies": {
+  		"prettier": "^3.0.3",
+  		"prettier-plugin-go-template": "^0.0.15",
+  		"vite": "^4.5.0"
+  	},
+  	"dependencies": {
+  		"htmx.org": "^1.9.6"
+  	}
+}
