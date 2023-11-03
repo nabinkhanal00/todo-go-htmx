@@ -18,7 +18,6 @@ func HandlerGetTodos(c *fiber.Ctx) error {
 			completedCount++
 		}
 	}
-	fmt.Println(todos, completedCount)
 	return c.Status(fiber.StatusOK).Render("index", fiber.Map{"Todos": todos, "TotalCount": len(todos), "CompletedCount": completedCount})
 
 }
@@ -28,17 +27,11 @@ func HandlerCreateTodo(c *fiber.Ctx) error {
 	if name == "" {
 		return c.Render("Form", nil)
 	}
-	res, err := createTodo(name)
+	_, err := createTodo(name)
 	if err != nil {
 		log.Println(err)
 		return c.SendStatus(fiber.StatusInternalServerError)
 	}
-	fmt.Println(res)
-	todos, err := getTodos()
-	if err != nil {
-		panic(err)
-	}
-	fmt.Println(todos)
 	return c.Status(fiber.StatusCreated).Render("Form", nil)
 }
 
