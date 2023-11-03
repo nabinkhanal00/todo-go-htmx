@@ -1,9 +1,6 @@
 package main
 
 import (
-	"log"
-	"os"
-
 	"github.com/Masterminds/sprig/v3"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
@@ -11,6 +8,8 @@ import (
 	"github.com/gofiber/template/html/v2"
 	_ "github.com/joho/godotenv/autoload"
 	"github.com/nabinkhanal00/todo-go-htmx/internal"
+	"log"
+	"os"
 )
 
 func main() {
