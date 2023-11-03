@@ -1,19 +1,22 @@
 package main
 
 import (
+	"log"
+	"os"
+
+	"github.com/Masterminds/sprig/v3"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/fiber/v2/middleware/logger"
 	"github.com/gofiber/template/html/v2"
 	_ "github.com/joho/godotenv/autoload"
 	"github.com/nabinkhanal00/todo-go-htmx/internal"
-	"log"
-	"os"
 )
 
 func main() {
 
 	engine := html.New("web/html", ".html")
+	engine.AddFuncMap(sprig.FuncMap())
 	a := fiber.New(fiber.Config{
 		Views: engine,
 	})
@@ -24,11 +27,7 @@ func main() {
 	if err != nil {
 		log.Fatalln(err.Error())
 	}
-	defer internal.CloseDB()
-
 	a.Static("/static", "web/static")
-	a.Get("/", func(c *fiber.Ctx) error {
-		return c.Render("index", fiber.Map{})
-	})
-	a.Listen(":" + os.Getenv("PORT"))
+	internal.SetupRoutes(a)
+	log.Fatalln(a.Listen(":" + os.Getenv("PORT")))
 }

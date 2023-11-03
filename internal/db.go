@@ -6,9 +6,8 @@ import (
 	_ "github.com/mattn/go-sqlite3"
 )
 
-var DB *sql.DB
-
 func SetupDB() error {
+
 	db, err := sql.Open("sqlite3", "todos.db")
 	if err != nil {
 		return err
@@ -17,10 +16,9 @@ func SetupDB() error {
 	if err != nil {
 		return err
 	}
-	DB = db
-	return nil
+	return db.Close()
 }
 
-func CloseDB() error {
-	return DB.Close()
+func ConnectDB() (*sql.DB, error) {
+	return sql.Open("sqlite3", "todos.db")
 }

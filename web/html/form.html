@@ -1,0 +1,14 @@
+{{ define "Form" }}
+<form hx-post="/">
+	<input type="text" name="name"
+		class="bg-gray-50 border border-gray-300 text-sm text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-5">
+	<button type="submit"
+		class="text-white bg-blue-700 hover:bg-blue-500 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 focus:outline-none mt-2.5 text-center inline-flex items-center">Add
+		Todo</button>
+
+</form>
+{{ end }}
+
+{{ define "Todo" }}
+<p>Todo</p>
+{{ end }}

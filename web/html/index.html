@@ -6,13 +6,25 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="/static/css/index.css">
-	<script src="/static/js/htmx.js"></script>
+	<link rel="icon" href="/static/favicon.png">
+	<script src="/static/js/app.js"></script>
 </head>
 
 <body>
-	<p class="text-red-700">
-		I am the destroyer.
-	</p>
+	<div class="max-w-screen-md mx-auto mt-8">
+		<div class="flex justify-between items-center">
+			{{ template "TotalCount" dict "Count" .TotalCount }}
+			{{ template "CompletedCount" dict "Count" .CompletedCount }}
+		</div>
+		<div>
+			{{ template "Form" }}
+		</div>
+		<div class="space-y-2.5 mt-4" id="items">
+			{{ range .Todos }}
+			{{ template "Todo" }}
+			{{ end }}
+		</div>
+	</div>
 </body>
 
 </html>
