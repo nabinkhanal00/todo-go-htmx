@@ -1,8 +1,9 @@
 {{ define "TotalCount" }}
-<p>TotalCount: {{ .Count }}</p>
+<p id="total-count" {{ if .SwapOOB }} hx-swap-oob="outerHTML:#total-count" {{ end }}>TotalCount: {{ .Count }}</p>
 {{ end }}
 
 
 {{ define "CompletedCount" }}
-<p> CompletedCount: {{ .Count }}</p>
+<p id="completed-count" {{ if .SwapOOB }} hx-swap-oob="outerHTML:#completed-count" {{ end }}> CompletedCount: {{ .Count
+	}}</p>
 {{ end }}
